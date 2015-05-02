@@ -1,0 +1,59 @@
+ {% extends 'base.html' %} {% block title %}Welcome to Fund A Friend {% endblock %} {% block content %}
+
+<style>
+.formcss {
+background: none repeat scroll 0 0 white;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    
+}
+
+.form-row {
+    border-bottom: 1px solid #eee;
+    font-size: 11px;
+    overflow: hidden;
+    padding: 8px 12px;
+    float: label;
+    
+}
+
+.form-label {
+display: block; width: 200px; 
+}
+
+.form-input {
+border: 1px solid #ccc;
+}
+</style>
+ 
+  <form>
+    <fieldset class="formcss">
+    <div class="form-row">  
+     <label class="form-label" for="loanamount">Loan Amount</label>
+    <input class="form-input" type="text" id="loanamount" name="loanamount"/>
+    </div>
+    <div class="form-row">
+    <label class="form-label" for="loanpurpose">Loan Purpose</label>
+   <select class="form-input" name="loanpurpose" onChange="">
+        <option value="debt">Debt Consolidation</option>
+        <option value="invest">Investment</option>
+        <option value="home">House Improvement</option>
+        <option value="card">Credit Card Payemnt</option>
+        <option value="auto">Auto</option>
+        <option value="others">Others</option>
+    </select>
+    </div>
+    <div class="form-row">
+    <label class="form-label" for="describe">Description</label>
+    <textarea name="describe" class="form-input" value="Describe briefly how the amoney will be used"></textarea> 
+    </div>
+    <div class="form-row">
+    <label class="form-label" for="payslip">Upload Payslip</label>
+    <input class="form-input" type="file" name="payslip" id="filepayslip" />
+    </div>
+    </fieldset>
+    
+  </form>
+  
+  {% endblock %}
+

@@ -1,0 +1,51 @@
+
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}"
+    xml:lang="{% firstof LANGUAGE_CODE 'en' %}"
+    lang="{% firstof LANGUAGE_CODE 'en' %}">
+  <head>
+    
+
+    <title>{% block title %}{% endblock %}</title>
+
+    {% block css %}
+      <link rel="stylesheet" type="text/css" href="/media/css/main.css">
+    {% endblock %}
+
+    {% block preload_js %}
+    <script src="/media/js/jquery/jquery-2.0.3.min.js"></script>
+    <style>
+
+      </style>
+    {% endblock %}
+
+    {% block extra-head %}{% endblock %}
+  </head>
+
+  <body>
+     {% include "menu.html" %}
+     
+      <div class="content">
+        {% block content-header %}
+          {% if error %}<div class="error">{{ error }}</div>{% endif %}
+          {% if info %}<div class="info">{{ info }}</div>{% endif %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="info">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endblock %}
+
+        {% block content %}{% endblock %}
+      </div>
+
+     
+    </div>
+     {% include "footer.html" %}
+    {% block js %}
+    {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+.join {
+ display: inline-block;
+  vertical-align: middle;
+  line-height: normal; 
+  margin-left : 30%;
+  margin-top : 10%;
+}
+</style>
+<div class="join">
+    <form id="joinform" action="{% url security.views.join %}" method="POST" enctype="multipart/form-data">
+          <fieldset>
+			<label for="username">Username</label><br />
+			<input id="usename" class="input" name="username" type="text" value="" size="50" required="true"/><br />
+			<label for="firstname">Firstname</label><br />
+			<input id="firstname" class="input" name="firstname" type="text" value="" size="50" required="true"/><br />
+			<label for="lastname">Lastname</label><br />
+			<input id="lastname" class="input" name="lastname" type="text" value="" size="50" required="true"/><br />
+			<label for="email">E Mail</label><br />
+			<input id="email" class="input" name="email" type="text" value="" size="50" required="true"/><br />
+			
+			<label for="password">Password</label><br/>
+			<input id="password" class="input" name="password" type="text" value="" size="50" required="true"/><br />
+			<label for="retypepassword">Retype Password</label><br />
+			<input id="retypepassword" class="input" name="retypepassword" type="text" value="" size="50" required="true"/><br />
+			<input id="submit" type="submit" value="Join" />
+	 </fieldset>
+    </form>
+</div>
+{% endblock %}

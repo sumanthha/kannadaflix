@@ -1,0 +1,10 @@
+import datetime
+from google.appengine.ext import db
+
+class Player(db.Model):
+    id         = db.IntegerProperty()
+    first_name = db.StringProperty()
+    last_name  = db.StringProperty()
+    join_date  = db.DateProperty()
+    email      = db.EmailProperty()
+    

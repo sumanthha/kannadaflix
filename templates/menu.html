@@ -1,0 +1,79 @@
+
+<link rel="stylesheet" type="text/css" href="/media/css/menu.css">
+<style>
+
+</style>
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+	// Requried: Navigation bar drop-down
+	$("nav ul li").hover(function() {
+		$(this).addClass("active");
+		$(this).find("ul").show().animate({opacity: 1}, 400);
+		},function() {
+		$(this).find("ul").hide().animate({opacity: 0}, 200);
+		$(this).removeClass("active");
+	});
+	
+	// Requried: Addtional styling elements
+	$('nav ul li ul li:first-child').prepend('<li class="arrow"></li>');
+	$('nav ul li:first-child').addClass('first');
+	$('nav ul li:last-child').addClass('last');
+	$('nav ul li ul').parent().append('<span class="dropdown"></span>').addClass('drop');
+
+});
+</script>
+<div class="mainmenu">
+	<nav class="dark">
+			<ul class="clear">
+				<li><a href="{% url mainapp.views.index %}">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Investing</a>
+					<ul>
+						<li><a href="#">Why Invest ?</a></li>
+						<li><a href="#">Brows Loans</a></li>
+						<li><a href="#">Performance</a></li>
+						<li><a href="#">FAQs on Investing</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Borrowing</a>
+					<ul>
+						<li><a href="{% url loan.views.apply_loan %}">Apply for Loan</a></li>
+						<li><a href="{% url loan.views.list_loans %}">List Loans</a></li>
+						<li><a href="{% url loan.views.list_loans %}">FAQs on Borrowing </a></li>
+										
+					</ul>
+				</li>
+				{% if user and user.is_active %}			
+				<li><a href="#">Account</a>
+					<ul>
+					    <li><a href="{% url security.views.account_summary %}">Overview</a></li>
+						<li><a href="{% url security.views.account_summary %}">Settings</a></li>
+						<li><a href="#">Borrow</a></li>
+						<li><a href="#">Invest</a></li>
+						<li><a href="#">Invite</a></li>
+						<li><a href="#">History</a></li>
+										
+					</ul>
+				</li>
+				{% else %}
+					<li><a href="{% url security.views.login %}">Login</a></li>	
+					<li><a href="{% url security.views.join %}">Join</a></li>
+				{% endif %}
+				<li><a href="#">Our blog</a></li>
+				<li><a href="#">Contact us</a></li>
+			</ul>
+		</nav>
+		{% if user and user.is_active %}	
+		<div class="signout"> <label>Welcome {{user.first_name}}</label> <br> <a href="{% url security.views.signoff %}">Sign out</a> </div>
+		{% endif %}
+		
+</div>
+
+
+
+
+
+
+        
+ 

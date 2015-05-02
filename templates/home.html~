@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Tigers Cricekt Club {% endblock %}
+
+{% block content %}
+ <style>
+    /* Prevents slides from flashing */
+    #slides {
+      display:none;
+    }
+   #slideshow {
+    position:relative;
+    height:100px;
+    width:200px;
+}
+
+#slideshow IMG {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:8;
+}
+
+#slideshow IMG.active {
+    z-index:10;
+}
+
+#slideshow IMG.last-active {
+    z-index:9;
+}
+  </style>
+ <script>
+function slideSwitch() {
+    var $active = $('#slideshow IMG.active');
+
+    if ( $active.length == 0 ) $active = $('#slideshow IMG:last');
+
+    var $next =  $active.next().length ? $active.next()
+        : $('#slideshow IMG:first');
+
+    $active.addClass('last-active');
+        
+    $next.css({opacity: 0.0})
+        .addClass('active')
+        .animate({opacity: 1.0}, 1000, function() {
+            $active.removeClass('active last-active');
+        });
+}
+
+$(function() {
+    setInterval( "slideSwitch()", 5000 );
+});
+  </script>
+<table>
+<tr> <td style="width:50%;align:top;">
+<p style="font-family: Arial,Helvetica,sans-serif;font-size:10pt">Tigers Cricket Club is a recent addition to Orange County Cricket Association. The team has mix of players returning to cricket after a break - a few years in some cases, few currently playing in SCCA or other Leagues and some enthusiastic to take on a new challenge. We played the 2011/12 Winter League tournament and did well for a new team.We had a few close games. Presently, we are gearing up for the OCCA Summer League tournament. New players are always welcome, as a new club, we need to strengthen our roster.</p> </td>
+<td style="width:50%;align:top;"><div id="slideshow" style="align:top;">
+    <img  height="400" width="400" src="/media/images/1.jpeg">
+    <img  height="400" width="400" src="/media/images/2.jpg">
+  </div>
+</td></tr></table>
+{% endblock %}
